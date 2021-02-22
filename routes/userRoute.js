@@ -6,8 +6,9 @@ const userController = require('../controllers/userController');
 
 module.exports = () => {
 
-    //GET users
+    //Mostrar todos los usuarios
     router.get('/user', userController.getUsers);
-
+    //Añadir usuarios
+    router.post('/user', userController.addUsers);
     return router;
 };
