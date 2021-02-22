@@ -10,5 +10,9 @@ module.exports = () => {
     router.get('/user', userController.getUsers);
     //Añadir usuarios
     router.post('/user', userController.addUsers);
+    //Obtener usuario por ID
+    router.get('/user/:id', userController.getUserById);
+
+
     return router;
 };

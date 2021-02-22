@@ -8,7 +8,7 @@ const routes = require('./routes/userRoute');
 const app = express();
 
 //Conexión
-mongoose.connect('mongodb://localhost/moviedatabase',
+mongoose.connect('mongodb+srv://geek:0Aodcwsdn7FiYIjy@geekshubs.a8rp0.mongodb.net/moviedatabase',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true

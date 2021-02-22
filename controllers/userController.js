@@ -25,3 +25,21 @@ exports.addUsers = async (req, res, next) => {
         next();
     }
 };
+
+//Usuario por ID
+exports.getUserById = async (req, res, next) => {
+    try {
+        const user = await userModel.findById(req.params.id);
+        if (!user) {
+            res.status(404).json({
+                message: 'El cliente no existe'
+            });
+        }
+        res.json(user);
+
+    } catch (error) {
+        res.status(400).json({
+            message: 'Error al procesar la petición'
+        });
+    }
+};
