@@ -10,6 +10,10 @@ class UserController {
         return User.find().limit(20);
     }
 
+    async findById(id) {
+        return User.findById(id);
+    }
+
     async store(user) {
         return User.create(user);
     }

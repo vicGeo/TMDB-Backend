@@ -16,6 +16,19 @@ router.get('/user', async (req, res) => {
     }
 });
 
+router.get('/user/:id', async (req, res) => {
+    try {
+        const id = await controllerUser.findById(req.params.id);
+        const status = 'Success!';
+        res.json({ status, id });
+
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Server Error'
+        });
+    }
+});
+
 router.post('/user', async (req, res) => {
     try {
         const id = await controllerUser.store(req.body);
@@ -47,7 +60,7 @@ router.delete('/user/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const status = 'Usuario eliminado'
-        await carsController.destroy(id);
+        await controllerUser.delete(id);
         res.json({ status, id });
 
     } catch (error) {
