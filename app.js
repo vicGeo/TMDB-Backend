@@ -5,6 +5,7 @@ const cors = require('cors');
 
 const routerUser = require('./routes/userRoute');
 const routerMovie = require('./routes/movieRoute');
+const routerOrder = require('./routes/orderRoute');
 
 const app = express();
 
@@ -23,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true}));
 //Habilitar cors
 app.use(cors());
 
-
+app.use(routerOrder);
 app.use(routerUser);
 app.use(routerMovie);
 

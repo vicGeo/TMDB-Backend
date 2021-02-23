@@ -70,5 +70,19 @@ router.delete('/movie/:id', async (req, res) => {
     }
 });
 
+router.get('/movie/search/:query', async (req, res) => {
+    try {
+        const movie = await controllerMovie.findByName( {
+            title: new RegExp(req.params.query, 'i')
+        });
+        res.json(movie);
+
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Server Error'
+        });
+    }
+});
+
 
 module.exports = router;

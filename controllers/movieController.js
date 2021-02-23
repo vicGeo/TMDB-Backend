@@ -13,8 +13,8 @@ class MovieController {
     async findById(id) {
         return Movie.findById(id);
     }
-    async findByName() {
-        return Movie.find();
+    async findByName(movie) {
+        return Movie.find(movie);
     }
 
     async store(movie) {
