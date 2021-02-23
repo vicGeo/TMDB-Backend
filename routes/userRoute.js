@@ -2,21 +2,60 @@ const express = require('express');
 
 const router = express.Router();
 
-const userController = require('../controllers/userController');
-
-module.exports = () => {
-
-    //Mostrar todos los usuarios
-    router.get('/user', userController.getUsers);
-    //Añadir usuarios
-    router.post('/user', userController.addUsers);
-    //Obtener usuario por ID
-    router.get('/user/:id', userController.getUserById);
-    //PUT Customers
-    router.put('/user/:id', userController.updateById);
-    //DELETE Customers
-    router.delete('/user/:id', userController.deleteById);
+const controllerUser = require('../controllers/userController');
 
 
-    return router;
-};
+router.get('/user', async (req, res) => {
+    try {
+        res.json(await controllerUser.indexAll());
+
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Server Error'
+        });
+    }
+});
+
+router.post('/user', async (req, res) => {
+    try {
+        const id = await controllerUser.store(req.body);
+        const status = 'Success!';
+        res.json({ status, id });
+
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Server Error'
+        });
+    }
+});
+
+router.put('/user/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        await controllerUser.update(id, req.body);
+        res.status(201).json({
+            message: 'Usuario actualizado correctamente'
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Server Error'
+        });
+    }
+});
+
+router.delete('/user/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const status = 'Usuario eliminado'
+        await carsController.destroy(id);
+        res.json({ status, id });
+
+    } catch (error) {
+        return res.sendStatus(500).json({
+            message: 'Server Error'
+        });
+    }
+});
+
+
+module.exports = router;
