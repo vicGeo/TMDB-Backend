@@ -19,10 +19,6 @@ class OrderController {
         return Order.create(order);
     }
 
-    async update(id, order) {
-        return Order.findByIdAndUpdate(id, order);
-    }
-
     async delete(id) {
         return Order.findByIdAndDelete(id);
     }
