@@ -19,12 +19,17 @@ class OrderController {
         return Order.create(order);
     }
 
-    async update(id, order) {
-        return Order.findByIdAndUpdate(id, order);
+    async findById(id) {
+        return Order.findById(id)
+        .populate('user')
+        .populate({
+            path: 'movies.movie',
+            model: 'Movies'
+        });
     }
 
     async delete(id) {
-        return Order.findByIdAndDelete(id);
+        return Order.findOneAndDelete(id);
     }
 
     async showOrderByUser() {
