@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const router = require('./routes/userRoute');
+const routerUser = require('./routes/userRoute');
+const routerMovie = require('./routes/movieRoute');
 
 const app = express();
 
@@ -23,7 +24,8 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use(cors());
 
 
-app.use(router);
+app.use(routerUser);
+app.use(routerMovie);
 
 app.get('/', (req, res) => {
     res.send('API REST para testear con POSTMAN :)');

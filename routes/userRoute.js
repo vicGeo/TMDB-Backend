@@ -64,7 +64,7 @@ router.delete('/user/:id', async (req, res) => {
         res.json({ status, id });
 
     } catch (error) {
-        return res.sendStatus(500).json({
+        return res.status(500).json({
             message: 'Server Error'
         });
     }
