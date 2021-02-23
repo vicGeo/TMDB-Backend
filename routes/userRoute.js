@@ -13,9 +13,9 @@ module.exports = () => {
     //Obtener usuario por ID
     router.get('/user/:id', userController.getUserById);
     //PUT Customers
-    router.put('/user/:id', customerController.updateById);
+    router.put('/user/:id', userController.updateById);
     //DELETE Customers
-    router.delete('/user/:id', customerController.deleteById);
+    router.delete('/user/:id', userController.deleteById);
 
 
     return router;
