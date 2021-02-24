@@ -4,7 +4,7 @@ const router = express.Router();
 
 const controllerOrder = require('../controllers/orderController');
 
-router.post('/order', async (req, res) => {
+router.post('/orders', async (req, res) => {
     try {
         const order = await controllerOrder.store(req.body);
         const status = 'Success!';
@@ -17,7 +17,7 @@ router.post('/order', async (req, res) => {
     }
 });
 
-router.get('/order', async (req, res) => {
+router.get('/orders', async (req, res) => {
     try {
         const getOrder = await controllerOrder.indexAll();
 
@@ -30,7 +30,7 @@ router.get('/order', async (req, res) => {
     }
 });
 
-router.get('/order/user/:id', async (req, res) => {
+router.get('/orders/users/:id', async (req, res) => {
     try {
         const showOrder = await controllerOrder.showOrderByUser({user: req.params.id});
         res.json(showOrder);
@@ -42,7 +42,7 @@ router.get('/order/user/:id', async (req, res) => {
     }
 });
 
-router.get('/order/:id', async (req, res) => {
+router.get('/orders/:id', async (req, res) => {
     try {
         const orderId = await controllerOrder.findById(req.params.id);
 
@@ -58,7 +58,7 @@ router.get('/order/:id', async (req, res) => {
     }
 });
 
-router.delete('/order/:id', async (req, res) => {
+router.delete('/orders/:id', async (req, res) => {
     try {
         await controllerOrder.delete({_id: req.params.id});
         res.json({ message: 'El pedido ha sido eliminado'})

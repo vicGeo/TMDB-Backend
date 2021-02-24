@@ -5,7 +5,7 @@ const router = express.Router();
 const controllerUser = require('../controllers/userController');
 
 
-router.get('/user', async (req, res) => {
+router.get('/users', async (req, res) => {
     try {
         res.json(await controllerUser.indexAll());
 
@@ -16,7 +16,7 @@ router.get('/user', async (req, res) => {
     }
 });
 
-router.get('/user/:id', async (req, res) => {
+router.get('/users/:id', async (req, res) => {
     try {
         const id = await controllerUser.findById(req.params.id);
         const status = 'Success!';
@@ -29,7 +29,7 @@ router.get('/user/:id', async (req, res) => {
     }
 });
 
-router.post('/user', async (req, res) => {
+router.post('/users', async (req, res) => {
     try {
         const id = await controllerUser.store(req.body);
         const status = 'Success!';
@@ -42,7 +42,7 @@ router.post('/user', async (req, res) => {
     }
 });
 
-router.put('/user/:id', async (req, res) => {
+router.put('/users/:id', async (req, res) => {
     try {
         const id = req.params.id;
         await controllerUser.update(id, req.body);
@@ -56,7 +56,7 @@ router.put('/user/:id', async (req, res) => {
     }
 });
 
-router.delete('/user/:id', async (req, res) => {
+router.delete('/users/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const status = 'Usuario eliminado'

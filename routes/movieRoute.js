@@ -16,7 +16,7 @@ router.get('/movie', async (req, res) => {
     }
 });
 
-router.get('/movie/:id', async (req, res) => {
+router.get('/movies/:id', async (req, res) => {
     try {
         const id = await controllerMovie.findById(req.params.id);
         const status = 'Success!';
@@ -29,7 +29,7 @@ router.get('/movie/:id', async (req, res) => {
     }
 });
 
-router.post('/movie', async (req, res) => {
+router.post('/movies', async (req, res) => {
     try {
         const id = await controllerMovie.store(req.body);
         const status = 'Success!';
@@ -42,7 +42,7 @@ router.post('/movie', async (req, res) => {
     }
 });
 
-router.put('/movie/:id', async (req, res) => {
+router.put('/movies/:id', async (req, res) => {
     try {
         const id = req.params.id;
         await controllerMovie.update(id, req.body);
@@ -56,7 +56,7 @@ router.put('/movie/:id', async (req, res) => {
     }
 });
 
-router.delete('/movie/:id', async (req, res) => {
+router.delete('/movies/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const status = 'Pelicula eliminada'
@@ -70,7 +70,7 @@ router.delete('/movie/:id', async (req, res) => {
     }
 });
 
-router.get('/movie/search/:query', async (req, res) => {
+router.get('/movies/search/:query', async (req, res) => {
     try {
         const movie = await controllerMovie.findByName( {
             title: new RegExp(req.params.query, 'i')
