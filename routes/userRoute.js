@@ -69,7 +69,7 @@ router.delete('/users/:id', async (req, res) => {
     }
 });
 
-router.post('/users/login', async (req, res) => {
+router.post('/users/login', auth, async (req, res) => {
     try {
         const {email, password} =  req.body;
         const jwt = await controllerUser.login(email, password);
