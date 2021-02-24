@@ -10,7 +10,8 @@ const routerOrder = require('./routes/orderRoute');
 const app = express();
 
 //Conexión
-mongoose.connect('mongodb+srv://geek:0Aodcwsdn7FiYIjy@geekshubs.a8rp0.mongodb.net/moviedatabase',
+mongoose.connect('mongodb+srv://geek:0Aodcwsdn7FiYIjy@geekshubs.a8rp0.mongodb.net/moviedatabase?retryWrites=true&w=majority',
+
     {
         useNewUrlParser: true,
         useCreateIndex: true,
@@ -33,6 +34,6 @@ app.get('/', (req, res) => {
     res.send('API REST para testear con POSTMAN :)');
 });
 
-app.listen(5000, () => {
+app.listen(process.env.PORT || 5000, () => {
     console.log('Server on!');
 });
