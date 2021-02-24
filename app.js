@@ -13,6 +13,7 @@ const app = express();
 mongoose.connect('mongodb+srv://geek:0Aodcwsdn7FiYIjy@geekshubs.a8rp0.mongodb.net/moviedatabase',
     {
         useNewUrlParser: true,
+        useCreateIndex: true,
         useUnifiedTopology: true
     }
 );
