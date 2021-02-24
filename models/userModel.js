@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+
+
 //Definimos el schema del usuario
 const Schema = mongoose.Schema;
 
@@ -23,8 +25,10 @@ const userSchema = new Schema ({
     },
     password: {
         type: String,
+        trim: true,
         required: true
     }
 });
+
 
 module.exports = mongoose.model('Users', userSchema);

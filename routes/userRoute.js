@@ -1,5 +1,4 @@
 const express = require('express');
-
 const router = express.Router();
 
 const controllerUser = require('../controllers/userController');
@@ -66,6 +65,19 @@ router.delete('/users/:id', async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             message: 'Server Error'
+        });
+    }
+});
+
+router.post('/users/login', async (req, res) => {
+    try {
+        const {email, password} =  req.body;
+        const jwt = await controllerUser.login(email, password);
+        res.json({ jwt });
+
+    } catch (error) {
+        return res.status(500).json({
+            message: 'error.message';
         });
     }
 });

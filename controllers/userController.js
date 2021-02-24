@@ -1,4 +1,6 @@
 const User = require('../models/userModel');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 class UserController {
 
@@ -15,6 +17,7 @@ class UserController {
     }
 
     async store(user) {
+        user.password = await bcrypt.hash(user.password, 6);
         return User.create(user);
     }
 
