@@ -5,7 +5,7 @@ const router = express.Router();
 const controllerMovie = require('../controllers/movieController');
 
 
-router.get('/movie', async (req, res) => {
+router.get('/movies', async (req, res) => {
     try {
         res.json(await controllerMovie.indexAll());
 

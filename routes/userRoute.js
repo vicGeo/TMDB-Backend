@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const controllerUser = require('../controllers/userController');
+const auth = require('../middlewares/auth');
 
 
 router.get('/users', async (req, res) => {

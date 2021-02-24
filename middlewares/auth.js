@@ -4,7 +4,7 @@ const secret = process.env.JWT_SECRET || 'secret';
 const auth = async (req, res, next) => {
     try {
         const token = req.headers.authorization;
-        const payload = jwt.verify(authorization, secret);
+        const payload = jwt.verify(token, secret);
         next();
     } catch (error) {
         const message = error.message;
